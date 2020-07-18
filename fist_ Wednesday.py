@@ -135,76 +135,92 @@
 
 #方法二:  time参数,和调料参数由用户输入. 定义一个input方法
 
+#
+# class Potato(object):
+#     #我觉得__init__函数不需要写.
+#     #定义init属性
+#     # def __init__(self):
+#     #     self.status = "生的"
+#     #     self.time = 0
+#     #     self.cooper = "不加"
+#
+#     #定义一个input方法,让用户输入time和coop
+#     def user_input(self):
+#         self.time = int(input("请输入烤地瓜的时间"))
+#         self.cooper = input("请输入口味")
+#         self.status = "生的"
+#
+#     #定义一个烤地瓜方法.并且判断地瓜状态
+#     def cook(self):
+#
+#         if 0 <= self.time < 3:
+#             self.status = "生的"
+#         elif 3 <= self.time < 5:
+#             self.status = "半生不熟"
+#         elif 5 <= self.time < 8:
+#             self.status = "熟的"
+#         else:
+#             self.status = "烤糊了"
+#
+#     def coop(self):
+#         "加入调料"
+#         print("加入了调料", self.coop)
+#
+#     def __str__(self):
+#         #定义类的解释
+#         return "这个地瓜考了{0}分钟,状态是{1},{2}调料".format(self.time, self.status, self.cooper)
+#
+# #实例化
+# LR = Potato()
+#
+# #调用input
+# LR.user_input()
+#
+# #调用考地瓜方法
+# LR.cook()
+# #查看类的描述.打印对象
+# print(LR)
 
-class Potato(object):
-    #我觉得__init__函数不需要写.
-    #定义init属性
-    # def __init__(self):
-    #     self.status = "生的"
-    #     self.time = 0
-    #     self.cooper = "不加"
 
-    #定义一个input方法,让用户输入time和coop
-    def user_input(self):
-        self.time = int(input("请输入烤地瓜的时间"))
-        self.cooper = input("请输入口味")
-        self.status = "生的"
 
-    #定义一个烤地瓜方法.并且判断地瓜状态
-    def cook(self):
 
-        if 0 <= self.time < 3:
-            self.status = "生的"
-        elif 3 <= self.time < 5:
-            self.status = "半生不熟"
-        elif 5 <= self.time < 8:
-            self.status = "熟的"
+#家具需求: 将小于房⼦子剩余⾯面积的家具摆放到房子中
+# 分析: 类题目中两类实物是家具和房子. 家具:furn
+# 类: 面积
+# 属性:  家具面积  房子面积   剩余面积
+#方法 : 计算面积   放进去
+
+#定义类: 面积
+class Area(object):
+    #定义构造函数,定义实例属性.
+    #创建对象时参数为: 家具面积,房子面积,家具名字
+    def __init__(self, furn_area, house_area, *furn_name):
+        #furn_area和house_area为形参. 带self的是本方法中形参赋予的属性名
+        self.furn_area = furn_area
+        self.house_area = house_area
+        self.left_area = self.house_area - self.furn_area
+        self.furn_name = furn_name
+        self.furn_adds = []
+    #定义方法:加入家具
+
+    def add_furn(self):
+        if self.furn_area <= self.left_area:
+            print("{0}家具面积小于房子剩余面积{1},可以加入".format(self.furn_name, self.left_area))
+            #如果加入家具,则放入家具列表
+            self.furn_adds.append(self.furn_name)
         else:
-            self.status = "烤糊了"
-
-    def coop(self):
-        "加入调料"
-        print("加入了调料", self.coop)
+            print("{0}家具的面积大于房子面积,放不进去".format(self.furn_name))
+     #定义str描述
 
     def __str__(self):
-        #定义类的解释
-        return "这个地瓜考了{0}分钟,状态是{1},{2}调料".format(self.time, self.status, self.cooper)
+        return "房子面积是{0},家具面积是{1},剩余面积是{2},房间已经有家具是{3}".format(
+            self.house_area, self.furn_area, self.left_area, self.furn_adds)
+
 
 #实例化
-LR = Potato()
-
-#调用input
-LR.user_input()
-
-#调用考地瓜方法
-LR.cook()
-#查看类的描述.打印对象
-print(LR)
-
-
-
-
-#家具
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+lr = Area(4, 100, "床", "桌子")
+lr.add_furn()
+print(lr)
 
 
 
