@@ -38,14 +38,14 @@
 #
 #     #定义方法:吃东西
 #     def eat(self):
-#         print("{0}爱吃东西,他的体重是{1}".format(self.name, self.weight))
-#         print("每次吃东西,体重加1")
+#         self.weight = self.weight + 1
+#         print("每次吃东西,体重加1.现在体重是{0}".format(self.weight))
 #
 #
-#     #定义方法:跑步,然后减肥
+#     #定义方法:跑步,然后减肥.每次调用都会减少0.5
 #     def run(self):
-#         print("{0}爱跑步".format(self.name))
-#         print("每次跑步体重减0.5")
+#         self.weight = self.weight - 0.5
+#         print("每次跑步体重减0.5,现在体重是{0}".format(self.weight))
 #
 # #小明的打印内容
 # #实例化
@@ -54,11 +54,11 @@
 # xiaoming.eat()
 # #调用run方法
 # xiaoming.run()
-#
-# #小美的打印内容
-# xiaomei = Person("小美", 45.0)
-# #类外部的调用类中的属性
-# print("小美的体重是{0}".format(xiaomei.weight))
+
+#小美的打印内容
+xiaomei = Person("小美", 45.0)
+#类外部的调用类中的属性
+print("小美的体重是{0}".format(xiaomei.weight))
 
 # #摆放家具
 # #类:home   属性:家具(furn)  户型(layout)   房子面积:house_aera   家具面积:furn_area  剩余面积:left_area
@@ -100,51 +100,51 @@
 #
 
 
-# 类和方法 :士兵(扣动扳机) + 枪 (发射 装弹)
-#对象:rain   AK47
-#属性 :sold_name   gun_name
-
-
-class Soldiers(object):
-    #类属性
-    gun_name = "AK47"
-    #定义构造函数
-    def __init__(self, sold_name):
-        #实例属性: 人名
-        self.sold_name = sold_name
-
-
-    #定义方法:扣动扳机
-    def shut(self):
-        print("{0}扣动了扳机".format(self.sold_name))
-
-    #一个类不能访问另一个类中的实例属性.因此把 枪名属性写到了 类属性里面.
-    def __str__(self):
-        return "{0}有一把{1}".format(self.sold_name, self.gun_name)
-
-
-class Gun(object):
-    def __init__(self, gun_name):
-        # 构造函数,实例属性枪名
-        self.gun_name = gun_name
-
-    #定义方法:发射子弹
-    def go(self):
-        print("%s发射了子弹" % self.gun_name)
-
-    #定义方法:增加子弹
-    def add_go(self):
-        print("%s装了子弹" % self.gun_name)
-
-#打印士兵相关
-rain = Soldiers("rain")
-print(rain)
-#对象调用开火
-rain.shut()
-
-
-
-
+# # 类和方法 :士兵(扣动扳机) + 枪 (发射 装弹)
+# #对象:rain   AK47
+# #属性 :sold_name   gun_name
+#
+#
+# class Soldiers(object):
+#     #类属性
+#     gun_name = "AK47"
+#     #定义构造函数
+#     def __init__(self, sold_name):
+#         #实例属性: 人名
+#         self.sold_name = sold_name
+#
+#
+#     #定义方法:扣动扳机
+#     def shut(self):
+#         print("{0}扣动了扳机".format(self.sold_name))
+#
+#     #一个类不能访问另一个类中的实例属性.因此把 枪名属性写到了 类属性里面.
+#     def __str__(self):
+#         return "{0}有一把{1}".format(self.sold_name, self.gun_name)
+#
+#
+# class Gun(object):
+#     def __init__(self, gun_name):
+#         # 构造函数,实例属性枪名
+#         self.gun_name = gun_name
+#
+#     #定义方法:发射子弹
+#     def go(self):
+#         print("%s发射了子弹" % self.gun_name)
+#
+#     #定义方法:增加子弹
+#     def add_go(self):
+#         print("%s装了子弹" % self.gun_name)
+#
+# #打印士兵相关
+# rain = Soldiers("rain")
+# print(rain)
+# #对象调用开火
+# rain.shut()
+#
+#
+#
+#
 
 
 
